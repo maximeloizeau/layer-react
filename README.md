@@ -3,17 +3,27 @@
 
 This library is the glue between your [React](http://facebook.github.io/react/) App and the [Layer WebSDK](https://github.com/layerhq/layer-websdk/).
 
+## Disclaimer
+
+This project is in Beta, no claims are made of the production-readiness of this project.  We encourage you to provide feedback and pull requests to this project.  Please feel free to use [Github's Issues](https://github.com/layerhq/layer-react/issues) to submit
+
+* Bug reports
+* Compliments
+* Proposals adjustments to the architecture that are more consistent with the philosophy of a Flux architecture or that work with a broader range of Flux implementations.
+
+Our emphasis as an organization has not been on mastery of React architectures, feedback is very much appreciated.
+
 ## Overview
 
-It provides an interface to subscribe to both local and remote changes in message and conversation objects.
+It provides an interface to subscribe to both local and remote changes in any Queryable Layer data.
 
 `connectQuery` creates a [higher order component](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750) from `WrappedComponent` that receives updates to its props whenever the queries built in `getQueries` return results.
 
-If you were to compare this and the Layer WebSDK to Flux. Queries act as Flux stores, `Layer.Client` acts as a dispatcher, and Layer WebSDK methods act as actions.
+If you were to compare this and the Layer WebSDK to Flux: Queries act as Flux stores, `Layer.Client` acts as a dispatcher, and Layer WebSDK methods act as actions.
 
 Queries allow you to subscribe to changes in the `Layer.Client`'s data. All Layer WebSDK methods are asynchronous and optimistic updates are received by subscribing queries.
 
-For example: `conversation.createMessage('test').send()` will trigger an optimistic update in any query that subscribes to that conversation's messages. `WrappedComponent` will immediately receive an update to its props. When the server responds with the created message, it's id will be set and the `WrappedComponent` will receive another update to its props.
+For example: `conversation.createMessage('test').send()` will trigger an optimistic update in any query that subscribes to that conversation's messages. `WrappedComponent` (defined below) will immediately receive an update to its props. When the server responds with the created message, it's id will be set and the `WrappedComponent` will receive another update to its props.
 
 ## Installation
 
