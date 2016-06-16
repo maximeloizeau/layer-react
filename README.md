@@ -27,7 +27,7 @@ For example: `conversation.createMessage('test').send()` will trigger an optimis
 
 ## Installation
 
-    npm install --save layer-sdk layer-react
+    npm install --save layer-websdk layer-react
 
 ## API
 
