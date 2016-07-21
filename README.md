@@ -180,7 +180,7 @@ connectTypingIndicator()(WrappedComponent: ReactClass): ReactClass
 ```javascript
 import { connectTypingIndicator } from 'layer-react';
 
-var TypingIndicatorContainer = connectTypingIndicator(TypingIndicator);
+var TypingIndicatorContainer = connectTypingIndicator()(TypingIndicator);
 ```
 
 #### Usage as ES6 Decorator
@@ -233,7 +233,7 @@ class TypingIndicator extends Component {
   }
 }
 
-export default connectTypingIndicator(TypingIndicator);
+export default connectTypingIndicator()(TypingIndicator);
 ```
 
 ## Credits
