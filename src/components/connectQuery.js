@@ -193,7 +193,9 @@ export default (getInitialQueryParams = {}, getQueries) =>
         const { queryParams, queryResults } = this.state;
 
         const queryIds = {};
-        Object.keys(this.queries).forEach(key => queryIds[key] = this.queries[key].id);
+        Object.keys(this.queries).forEach((key) => {
+          queryIds[key] = this.queries[key].id;
+        });
 
         const passedProps = {
           ...queryResults,
