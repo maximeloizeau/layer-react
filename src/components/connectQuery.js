@@ -134,8 +134,7 @@ export default (getInitialQueryParams = {}, getQueries) =>
         Object.keys(this.queries).forEach((key) => {
           if (!queryBuilders[key]) {
             const query = this.queries[key];
-            const queryCallback = this.callbacks[query.internalId];
-            query.off('change', queryCallback);
+            query.off('change', this.callbacks[query.internalId]);
 
             delete this.queries[key];
             delete this.callbacks[query.internalId];
@@ -217,8 +216,7 @@ export default (getInitialQueryParams = {}, getQueries) =>
         // When the component unmounts, unsubscribe from all event listeners.
         Object.keys(this.queries).forEach((key) => {
           const query = this.queries[key];
-          const queryCallback = this.callbacks[query.internalId];
-          query.off('change', queryCallback);
+          query.off('change', this.callbacks[query.internalId]);
           this.client.off('ready', this._onClientReady, this);
         });
       }
